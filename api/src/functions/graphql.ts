@@ -12,6 +12,10 @@ export const handler = createGraphQLHandler({
   directives,
   sdls,
   services,
+  // enable introspection and GraphiQLin all environments just to allow the
+  // demo to be seen in  production, but we would never allow this in the real world!
+  allowIntrospection: true,
+  allowGraphiQL: true,
   onException: () => {
     // Disconnect from your database with an unhandled exception.
     db.$disconnect()

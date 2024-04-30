@@ -31,7 +31,7 @@ model Account {
 
 model Agent {
   id        Int      @id @default(autoincrement())
-  accountId Int?
+  accountId Int
   firstName String
   lastName  String
   email     String   @unique
@@ -39,29 +39,29 @@ model Agent {
   updatedAt DateTime @updatedAt
 
   // Relationships
-  Account  Account?   @relation(fields: [accountId], references: [id])
+  Account  Account    @relation(fields: [accountId], references: [id])
   Schedule Schedule[]
 }
 
 model Schedule {
   id        String   @id @default(uuid())
-  accountId Int?
-  agentId   Int?
+  accountId Int
+  agentId   Int
   startTime DateTime
   endTime   DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   // Relationships
-  Account Account? @relation(fields: [accountId], references: [id])
-  Agent   Agent?   @relation(fields: [agentId], references: [id])
+  Account Account @relation(fields: [accountId], references: [id])
+  Agent   Agent   @relation(fields: [agentId], references: [id])
   Task    Task[]
 }
 
 model Task {
   id         String   @id @default(uuid())
-  accountId  Int?
-  scheduleId String?
+  accountId  Int
+  scheduleId String
   startTime  DateTime
   duration   Int
   type       TaskType
@@ -69,8 +69,8 @@ model Task {
   updatedAt  DateTime @updatedAt
 
   // Relationships
-  Schedule Schedule? @relation(fields: [scheduleId], references: [id])
-  Account  Account?  @relation(fields: [accountId], references: [id])
+  Schedule Schedule @relation(fields: [scheduleId], references: [id])
+  Account  Account  @relation(fields: [accountId], references: [id])
 }
 
 enum TaskType {
