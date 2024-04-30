@@ -5,8 +5,9 @@
 // https://www.prisma.io/docs/orm/prisma-migrate
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgres"
+  url       = env("DATABASE_POOLING_URL")
+  directUrl = env("DATABASE_DIRECT_URL")
 }
 
 generator client {
@@ -14,11 +15,74 @@ generator client {
   binaryTargets = "native"
 }
 
-// Define your own datamodels here and run `yarn redwood prisma migrate dev`
-// to create migrations for them and apply to your dev DB.
-// TODO: Please remove the following example:
-model UserExample {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model Account {
+  id        Int      @id @default(autoincrement())
+  name      String
+  url       String?
+  timezone  String   @default("Europe/London")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  Agent    Agent[]
+  Schedule Schedule[]
+  Task     Task[]
+}
+
+model Agent {
+  id        Int      @id @default(autoincrement())
+  accountId Int?
+  firstName String
+  lastName  String
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  Account  Account?   @relation(fields: [accountId], references: [id])
+  Schedule Schedule[]
+}
+
+model Schedule {
+  id        String   @id @default(uuid())
+  accountId Int?
+  agentId   Int?
+  startTime DateTime
+  endTime   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  Account Account? @relation(fields: [accountId], references: [id])
+  Agent   Agent?   @relation(fields: [agentId], references: [id])
+  Task    Task[]
+}
+
+model Task {
+  id         String   @id @default(uuid())
+  accountId  Int?
+  scheduleId String?
+  startTime  DateTime
+  duration   Int
+  type       TaskType
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relationships
+  Schedule Schedule? @relation(fields: [scheduleId], references: [id])
+  Account  Account?  @relation(fields: [accountId], references: [id])
+}
+
+enum TaskType {
+  break
+  work
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  firstName String?
+  lastName  String?
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
