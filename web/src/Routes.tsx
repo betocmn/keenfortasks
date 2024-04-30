@@ -11,9 +11,15 @@ import { Set, Router, Route } from '@redwoodjs/router'
 
 import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 
+import { useAuth } from './auth'
+
 const Routes = () => {
   return (
-    <Router>
+    <Router useAuth={useAuth}>
+      <Route path="/login" page={LoginPage} name="login" />
+      <Route path="/signup" page={SignupPage} name="signup" />
+      <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+      <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       <Set wrap={ScaffoldLayout} title="Schedules" titleTo="schedules" buttonLabel="New Schedule" buttonTo="newSchedule">
         <Route path="/schedules/new" page={ScheduleNewSchedulePage} name="newSchedule" />
         <Route path="/schedules/{id}/edit" page={ScheduleEditSchedulePage} name="editSchedule" />
