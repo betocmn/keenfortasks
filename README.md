@@ -74,5 +74,6 @@ yarn rw test
 - I chose RedwoodJS just for speed since I've been using it in the last few years. But with more time I would probably do it in nestjs + fastify.
 - I have auth working, but intentionally enabled two endpoints listed on the top of this doc to "skipAuth" for demo purposes.
 - There's an easy plugin on Redwood to generate REST endpoints from the GraphQL definitions, I might come back to do this anyways.
+- I would definitely create a single `CreateScheduleAndTasks` mutation for better performance and validation.
 - I used camelCases for some attribute names (which is different than the instructions), this was known and just for standard purposes with GraphQL and RedwoodJS.
-- Must-Have TODOs: Cache, Rate Limiting, Logging & Monitoring, Role-based Access Control (RBAC), Timezone handling, IP Address Whitelisting
+- Must-Have TODOs: GraphQL snapshot tests, Cache, Rate Limiting, Logging & Monitoring, Role-based Access Control (RBAC), Timezone handling, IP Address Whitelisting...
