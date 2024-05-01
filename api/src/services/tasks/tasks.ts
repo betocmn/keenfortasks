@@ -49,7 +49,7 @@ export const updateTask: MutationResolvers['updateTask'] = async ({
       : undefined
 
   // Run business-specific validations
-  const customError = await taskValidator.validateUpdateInput(input)
+  const customError = await taskValidator.validateUpdateInput(input, id)
   if (customError) throw customError
 
   return db.task.update({

@@ -35,7 +35,7 @@ export const updateSchedule: MutationResolvers['updateSchedule'] = async ({
   input,
 }) => {
   // Run business-specific validations
-  const customError = await scheduleValidator.validateUpdateInput(input)
+  const customError = await scheduleValidator.validateUpdateInput(input, id)
   if (customError) throw customError
 
   return db.schedule.update({

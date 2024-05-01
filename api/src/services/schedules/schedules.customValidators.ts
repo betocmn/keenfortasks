@@ -24,11 +24,21 @@ class ScheduleValidator implements CustomValidator {
   }
 
   async validateUpdateInput(
-    input: UpdateScheduleInput
+    input: UpdateScheduleInput,
+    id: string
   ): Promise<ValidationError | null> {
-    // Similar validation logic as validateCreateInput
-    // But you can also overwrite the below for custom validations.
-    return await this.validateCreateInput(input as CreateScheduleInput)
+    const startTime = new Date(input.startTime)
+    const endTime = new Date(input.endTime)
+
+    const errors = await Promise.all([
+      this.validateStartTimeNotInPast(startTime),
+      this.validateScheduleTiming(startTime, endTime),
+      this.validateScheduleDuration(startTime, endTime),
+      this.validateOverlappingSchedules(startTime, endTime, input.agentId, id),
+    ])
+
+    const validationError = errors.find((error) => error !== null)
+    return validationError || null
   }
 
   private async validateStartTimeNotInPast(
@@ -70,7 +80,8 @@ class ScheduleValidator implements CustomValidator {
   private async validateOverlappingSchedules(
     newStartTime: Date,
     newEndTime: Date,
-    agentId: number
+    agentId: number,
+    scheduleIdToUpdate?: string
   ): Promise<ValidationError | null> {
     /**
      * The conditions for overlapping schedules are as follows:
@@ -80,6 +91,9 @@ class ScheduleValidator implements CustomValidator {
      */
     const overlappingSchedule = await db.schedule.findFirst({
       where: {
+        id: {
+          not: scheduleIdToUpdate ? { equals: scheduleIdToUpdate } : undefined,
+        },
         agentId,
         endTime: {
           gt: newStartTime,

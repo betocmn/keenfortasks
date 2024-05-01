@@ -14,6 +14,7 @@ class TaskValidator implements CustomValidator {
     const errors = await Promise.all([
       this.validateOverlappingTasks(scheduleId, new Date(startTime), duration),
       this.validateTaskDuration(scheduleId, new Date(startTime), duration),
+      this.validateTaskBoundaries(scheduleId, new Date(startTime), duration),
     ])
 
     const validationError = errors.find((error) => error !== null)
@@ -21,17 +22,31 @@ class TaskValidator implements CustomValidator {
   }
 
   async validateUpdateInput(
-    input: UpdateTaskInput
+    input: UpdateTaskInput,
+    id: string
   ): Promise<ValidationError | null> {
-    // Same validation logic as validateCreateInput
-    // But you can also overwrite the below for custom rules.
-    return await this.validateCreateInput(input as CreateTaskInput)
+    const { scheduleId, startTime, duration } = input
+
+    const errors = await Promise.all([
+      this.validateOverlappingTasks(
+        scheduleId,
+        new Date(startTime),
+        duration,
+        id
+      ),
+      this.validateTaskDuration(scheduleId, new Date(startTime), duration),
+      this.validateTaskBoundaries(scheduleId, new Date(startTime), duration),
+    ])
+
+    const validationError = errors.find((error) => error !== null)
+    return validationError || null
   }
 
   private async validateOverlappingTasks(
     scheduleId: string,
     newStartTime: Date,
-    newDuration: number
+    newDuration: number,
+    taskIdToUpdate?: string
   ): Promise<ValidationError | null> {
     const newEndTime = new Date(newStartTime.getTime() + newDuration * 1000)
 
@@ -43,6 +58,9 @@ class TaskValidator implements CustomValidator {
      */
     const overlappingTask = await db.task.findFirst({
       where: {
+        id: {
+          not: taskIdToUpdate ? { equals: taskIdToUpdate } : undefined,
+        },
         scheduleId,
         endTime: {
           gt: newStartTime,
@@ -64,7 +82,7 @@ class TaskValidator implements CustomValidator {
     startTime: Date,
     duration: number
   ): Promise<ValidationError | null> {
-    const schedule = await db.schedule.findUnique({
+    const schedule = await db.schedule.findFirst({
       where: {
         id: scheduleId,
       },
@@ -81,6 +99,32 @@ class TaskValidator implements CustomValidator {
         'The task duration exceeds the schedule end time.'
       )
     }
+    return null
+  }
+
+  private async validateTaskBoundaries(
+    scheduleId: string,
+    newStartTime: Date,
+    newDuration: number
+  ): Promise<ValidationError | null> {
+    const schedule = await db.schedule.findFirst({
+      where: {
+        id: scheduleId,
+      },
+    })
+
+    if (!schedule) {
+      return new ValidationError('The specified schedule does not exist.')
+    }
+
+    const newEndTime = new Date(newStartTime.getTime() + newDuration * 1000)
+
+    if (newStartTime < schedule.startTime || newEndTime > schedule.endTime) {
+      return new ValidationError(
+        'The task must fall within the schedule boundaries.'
+      )
+    }
+
     return null
   }
 }

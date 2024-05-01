@@ -6,28 +6,27 @@ export const standard = defineScenario<Prisma.TaskCreateArgs>({
   task: {
     one: {
       data: {
-        startTime: '2024-04-30T11:23:38.125Z',
-        duration: 4532351,
+        startTime: '2024-07-30T11:23:38.125Z',
+        duration: 3600, // 1 hour in seconds
+        endTime: '2024-07-30T12:23:38.125Z',
         type: 'break',
-        updatedAt: '2024-04-30T11:23:38.125Z',
         Schedule: {
           create: {
-            startTime: '2024-04-30T11:23:38.125Z',
-            endTime: '2024-04-30T11:23:38.125Z',
-            updatedAt: '2024-04-30T11:23:38.125Z',
+            startTime: '2024-07-30T10:00:00.000Z',
+            endTime: '2024-07-30T18:00:00.000Z',
             Account: {
-              create: { name: 'String', updatedAt: '2024-04-30T11:23:38.125Z' },
+              create: {
+                name: 'String',
+              },
             },
             Agent: {
               create: {
                 firstName: 'String',
                 lastName: 'String',
                 email: 'String1444019',
-                updatedAt: '2024-04-30T11:23:38.125Z',
                 Account: {
                   create: {
                     name: 'String',
-                    updatedAt: '2024-04-30T11:23:38.125Z',
                   },
                 },
               },
@@ -35,34 +34,35 @@ export const standard = defineScenario<Prisma.TaskCreateArgs>({
           },
         },
         Account: {
-          create: { name: 'String', updatedAt: '2024-04-30T11:23:38.125Z' },
+          create: {
+            name: 'String',
+          },
         },
       },
     },
     two: {
       data: {
-        startTime: '2024-04-30T11:23:38.125Z',
-        duration: 5126164,
+        startTime: '2024-09-25T14:00:00.000Z',
+        duration: 7200, // 2 hours in seconds
+        endTime: '2024-09-25T16:00:00.000Z',
         type: 'break',
-        updatedAt: '2024-04-30T11:23:38.125Z',
         Schedule: {
           create: {
-            startTime: '2024-04-30T11:23:38.125Z',
-            endTime: '2024-04-30T11:23:38.125Z',
-            updatedAt: '2024-04-30T11:23:38.125Z',
+            startTime: '2024-09-25T10:00:00.000Z',
+            endTime: '2024-09-30T18:00:00.000Z',
             Account: {
-              create: { name: 'String', updatedAt: '2024-04-30T11:23:38.125Z' },
+              create: {
+                name: 'String',
+              },
             },
             Agent: {
               create: {
                 firstName: 'String',
                 lastName: 'String',
                 email: 'String3467512',
-                updatedAt: '2024-04-30T11:23:38.125Z',
                 Account: {
                   create: {
                     name: 'String',
-                    updatedAt: '2024-04-30T11:23:38.125Z',
                   },
                 },
               },
@@ -70,7 +70,9 @@ export const standard = defineScenario<Prisma.TaskCreateArgs>({
           },
         },
         Account: {
-          create: { name: 'String', updatedAt: '2024-04-30T11:23:38.125Z' },
+          create: {
+            name: 'String',
+          },
         },
       },
     },
