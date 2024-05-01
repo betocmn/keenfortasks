@@ -32,7 +32,7 @@ export const schema = gql`
   }
 
   type Mutation {
-    createSchedule(input: CreateScheduleInput!): Schedule! @requireAuth
+    createSchedule(input: CreateScheduleInput!): Schedule! @skipAuth
     updateSchedule(id: String!, input: UpdateScheduleInput!): Schedule!
       @requireAuth
     deleteSchedule(id: String!): Schedule! @requireAuth

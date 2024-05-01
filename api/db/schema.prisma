@@ -6,8 +6,8 @@
 
 datasource db {
   provider  = "postgres"
-  url       = env("DATABASE_POOLING_URL")
-  directUrl = env("DATABASE_DIRECT_URL")
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_NON_POOLING")
 }
 
 generator client {
@@ -63,7 +63,8 @@ model Task {
   accountId  Int
   scheduleId String
   startTime  DateTime
-  duration   Int
+  duration   Int // in seconds
+  endTime    DateTime
   type       TaskType
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt

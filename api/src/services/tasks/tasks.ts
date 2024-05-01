@@ -6,6 +6,8 @@ import type {
 
 import { db } from 'src/lib/db'
 
+import { taskValidator } from './tasks.customValidators'
+
 export const tasks: QueryResolvers['tasks'] = () => {
   return db.task.findMany()
 }
@@ -16,16 +18,48 @@ export const task: QueryResolvers['task'] = ({ id }) => {
   })
 }
 
-export const createTask: MutationResolvers['createTask'] = ({ input }) => {
+export const createTask: MutationResolvers['createTask'] = async ({
+  input,
+}) => {
+  const { startTime, duration, ...rest } = input
+  const endTime = new Date(new Date(startTime).getTime() + duration * 1000)
+
+  // Run business-specific validations
+  const customError = await taskValidator.validateCreateInput(input)
+  if (customError) throw customError
+
   return db.task.create({
-    data: input,
+    data: {
+      ...rest,
+      startTime,
+      endTime,
+      duration,
+    },
   })
 }
 
-export const updateTask: MutationResolvers['updateTask'] = ({ id, input }) => {
+export const updateTask: MutationResolvers['updateTask'] = async ({
+  id,
+  input,
+}) => {
+  const { startTime, duration, ...rest } = input
+  const endTime =
+    startTime && duration
+      ? new Date(new Date(startTime).getTime() + duration * 1000)
+      : undefined
+
+  // Run business-specific validations
+  const customError = await taskValidator.validateUpdateInput(input)
+  if (customError) throw customError
+
   return db.task.update({
-    data: input,
     where: { id },
+    data: {
+      ...rest,
+      ...(startTime && { startTime }),
+      ...(endTime && { endTime }),
+      ...(duration && { duration }),
+    },
   })
 }
 

@@ -6,6 +6,8 @@ import type {
 
 import { db } from 'src/lib/db'
 
+import { scheduleValidator } from './schedules.customValidators'
+
 export const schedules: QueryResolvers['schedules'] = () => {
   return db.schedule.findMany()
 }
@@ -16,18 +18,26 @@ export const schedule: QueryResolvers['schedule'] = ({ id }) => {
   })
 }
 
-export const createSchedule: MutationResolvers['createSchedule'] = ({
+export const createSchedule: MutationResolvers['createSchedule'] = async ({
   input,
 }) => {
+  // Run business-specific validations
+  const customError = await scheduleValidator.validateCreateInput(input)
+  if (customError) throw customError
+
   return db.schedule.create({
     data: input,
   })
 }
 
-export const updateSchedule: MutationResolvers['updateSchedule'] = ({
+export const updateSchedule: MutationResolvers['updateSchedule'] = async ({
   id,
   input,
 }) => {
+  // Run business-specific validations
+  const customError = await scheduleValidator.validateUpdateInput(input)
+  if (customError) throw customError
+
   return db.schedule.update({
     data: input,
     where: { id },

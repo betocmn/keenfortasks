@@ -4,6 +4,7 @@ export const schema = gql`
     accountId: Int!
     scheduleId: String!
     startTime: DateTime!
+    endTime: DateTime!
     duration: Int!
     type: TaskType!
     createdAt: DateTime!
@@ -39,7 +40,7 @@ export const schema = gql`
   }
 
   type Mutation {
-    createTask(input: CreateTaskInput!): Task! @requireAuth
+    createTask(input: CreateTaskInput!): Task! @skipAuth
     updateTask(id: String!, input: UpdateTaskInput!): Task! @requireAuth
     deleteTask(id: String!): Task! @requireAuth
   }

@@ -7,19 +7,21 @@ export const standard = defineScenario<Prisma.ScheduleCreateArgs>({
     one: {
       data: {
         startTime: '2024-04-30T11:29:43.765Z',
-        endTime: '2024-04-30T11:29:43.765Z',
-        updatedAt: '2024-04-30T11:29:43.765Z',
+        endTime: '2024-04-30T12:29:43.765Z', // endTime to be after startTime
         Account: {
-          create: { name: 'String', updatedAt: '2024-04-30T11:29:43.765Z' },
+          create: {
+            name: 'String',
+          },
         },
         Agent: {
           create: {
             firstName: 'String',
             lastName: 'String',
             email: 'String8394448',
-            updatedAt: '2024-04-30T11:29:43.765Z',
             Account: {
-              create: { name: 'String', updatedAt: '2024-04-30T11:29:43.765Z' },
+              create: {
+                name: 'String',
+              },
             },
           },
         },
@@ -27,20 +29,22 @@ export const standard = defineScenario<Prisma.ScheduleCreateArgs>({
     },
     two: {
       data: {
-        startTime: '2024-04-30T11:29:43.765Z',
-        endTime: '2024-04-30T11:29:43.765Z',
-        updatedAt: '2024-04-30T11:29:43.765Z',
+        startTime: '2024-04-30T13:29:43.765Z', // startTime to be after the previous schedule's endTime
+        endTime: '2024-04-30T14:29:43.765Z', // endTime to be after startTime
         Account: {
-          create: { name: 'String', updatedAt: '2024-04-30T11:29:43.765Z' },
+          create: {
+            name: 'String',
+          },
         },
         Agent: {
           create: {
             firstName: 'String',
             lastName: 'String',
             email: 'String7269523',
-            updatedAt: '2024-04-30T11:29:43.765Z',
             Account: {
-              create: { name: 'String', updatedAt: '2024-04-30T11:29:43.765Z' },
+              create: {
+                name: 'String',
+              },
             },
           },
         },
