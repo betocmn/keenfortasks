@@ -14,7 +14,7 @@ Go to https://keenfortasks.netlify.app/
 
 Also, you can go to the GraphQL playground at https://keenfortasks.netlify.app/.netlify/functions/graphql (I would never expose this in production... This is just for DEMO purposes)
 
-Example API Calls:
+Example API Calls (with auth disabled for quick demo purposes):
 
 [Create Schedule](https://keenfortasks.netlify.app/.netlify/functions/graphql?query=mutation+CreateSchedule+%7B%0A++createSchedule%28input%3A+%7B%0A++++accountId%3A+1%2C%0A++++agentId%3A+1%2C%0A++++startTime%3A+%222025-06-01T07%3A04%3A07.000Z%22%2C%0A++++endTime%3A+%222025-06-01T07%3A06%3A02.000Z%22%0A++%7D%29+%7B%0A++++id%0A++++accountId%0A++++agentId%0A++++startTime%0A++++endTime%0A++%7D%0A%7D%0A#)
 
@@ -72,6 +72,7 @@ yarn rw test
 
 ## My Notes on Known Limitations & TODOs
 - I chose RedwoodJS just for speed since I've been using it in the last few years. But with more time I would probably do it in nestjs + fastify.
+- I have auth working, but intentionally enabled two endpoints listed on the top of this doc to "skipAuth" for demo purposes.
 - There's an easy plugin on Redwood to generate REST endpoints from the GraphQL definitions, I might come back to do this anyways.
 - I used camelCases for some attribute names (which is different than the instructions), this was known and just for standard purposes with GraphQL and RedwoodJS.
 - Must-Have TODOs: Cache, Rate Limiting, Logging & Monitoring, Role-based Access Control (RBAC), Timezone handling, IP Address Whitelisting
