@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@graphql-yoga/plugin-sofa": "^3.3.0",
     "@redwoodjs/api": "7.4.3",
     "@redwoodjs/auth-dbauth-api": "7.4.3",
     "@redwoodjs/graphql-server": "7.4.3"

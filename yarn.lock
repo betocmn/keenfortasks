@@ -1712,6 +1712,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.18.3":
+  version: 7.24.5
+  resolution: "@babel/runtime@npm:7.24.5"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 10c0/05730e43e8ba6550eae9fd4fb5e7d9d3cb91140379425abcb2a1ff9cebad518a280d82c4c4b0f57ada26a863106ac54a748d90c775790c0e2cd0ddd85ccdf346
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.18.10, @babel/template@npm:^7.20.7, @babel/template@npm:^7.22.15, @babel/template@npm:^7.24.0, @babel/template@npm:^7.3.3":
   version: 7.24.0
   resolution: "@babel/template@npm:7.24.0"
@@ -3380,6 +3389,18 @@ __metadata:
     graphql: ^15.2.0 || ^16.0.0
     graphql-yoga: ^5.2.0
   checksum: 10c0/57afc915826e75e5b1f94c2fbc5451f40ff7a484ef302ed17fb0f55d301d43c94facd1853e123fd8e9ef5a500c65bfe82884ab6edf24891e781815fa9064211c
+  languageName: node
+  linkType: hard
+
+"@graphql-yoga/plugin-sofa@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "@graphql-yoga/plugin-sofa@npm:3.3.0"
+  dependencies:
+    sofa-api: "npm:^0.18.0"
+  peerDependencies:
+    graphql: ^15.2.0 || ^16.0.0
+    graphql-yoga: ^5.3.0
+  checksum: 10c0/9744d3488d42c640641984accd2f2a723981079b8c7fab8c144e5b59c69770cc5ba497514ca6b74b65ac6a81629e34f5d4acd02493f637593f0952e5fd6cb673
   languageName: node
   linkType: hard
 
@@ -5068,6 +5089,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sinclair/typebox@npm:^0.32.0":
+  version: 0.32.27
+  resolution: "@sinclair/typebox@npm:0.32.27"
+  checksum: 10c0/b29dda806b80439f476ca7f326e2474302305810b44e3a9469290fbd8c2e00f209876f19519e4591a258cfa9fa6c32b4abf1a89f90cce2597867b987909337bf
+  languageName: node
+  linkType: hard
+
 "@sindresorhus/is@npm:^0.14.0":
   version: 0.14.0
   resolution: "@sindresorhus/is@npm:0.14.0"
@@ -6333,6 +6361,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@whatwg-node/cookie-store@npm:^0.2.0":
+  version: 0.2.2
+  resolution: "@whatwg-node/cookie-store@npm:0.2.2"
+  dependencies:
+    tslib: "npm:^2.3.1"
+  checksum: 10c0/f875b57addf8b7982c4c3d744f9809cdb96a013acf6b4775856c66e74e17fa316eae75595d6324bb10d0efb74f1defb2da67d41d603a5fb3e83fbd88e96f83b1
+  languageName: node
+  linkType: hard
+
 "@whatwg-node/events@npm:^0.0.3":
   version: 0.0.3
   resolution: "@whatwg-node/events@npm:0.0.3"
@@ -6347,7 +6384,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@whatwg-node/fetch@npm:0.9.17, @whatwg-node/fetch@npm:^0.9.17, @whatwg-node/fetch@npm:^0.9.7":
+"@whatwg-node/fetch@npm:0.9.17, @whatwg-node/fetch@npm:^0.9.14, @whatwg-node/fetch@npm:^0.9.17, @whatwg-node/fetch@npm:^0.9.4, @whatwg-node/fetch@npm:^0.9.7":
   version: 0.9.17
   resolution: "@whatwg-node/fetch@npm:0.9.17"
   dependencies:
@@ -6403,6 +6440,16 @@ __metadata:
     "@whatwg-node/fetch": "npm:^0.9.17"
     tslib: "npm:^2.3.1"
   checksum: 10c0/50e97acfb2280be9decd9322c70389e6d672755979e4c4a00820d400804932d8196ce972294a2a1e37d71dd7340b352bd66a5ed3f0012ebf0939c5149d8e8086
+  languageName: node
+  linkType: hard
+
+"@whatwg-node/server@npm:^0.9.15":
+  version: 0.9.34
+  resolution: "@whatwg-node/server@npm:0.9.34"
+  dependencies:
+    "@whatwg-node/fetch": "npm:^0.9.17"
+    tslib: "npm:^2.3.1"
+  checksum: 10c0/6f2f651d8b1a95c81244b5b61d19f8eedccb66dcc50c7a9fc7c3ef8baa47ce756e07e3ca50f8c61e729f1dbde9e3282f7eedf3357aa75aa132f458138484cc4d
   languageName: node
   linkType: hard
 
@@ -6707,7 +6754,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ansi-colors@npm:^4.1.1":
+"ansi-colors@npm:^4.1.1, ansi-colors@npm:^4.1.3":
   version: 4.1.3
   resolution: "ansi-colors@npm:4.1.3"
   checksum: 10c0/ec87a2f59902f74e61eada7f6e6fe20094a628dab765cfdbd03c3477599368768cffccdb5d3bb19a1b6c99126783a143b1fee31aab729b31ffe5836c7e5e28b9
@@ -6838,6 +6885,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "api@workspace:api"
   dependencies:
+    "@graphql-yoga/plugin-sofa": "npm:^3.3.0"
     "@redwoodjs/api": "npm:7.4.3"
     "@redwoodjs/auth-dbauth-api": "npm:7.4.3"
     "@redwoodjs/graphql-server": "npm:7.4.3"
@@ -11324,6 +11372,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fets@npm:^0.7.0":
+  version: 0.7.2
+  resolution: "fets@npm:0.7.2"
+  dependencies:
+    "@sinclair/typebox": "npm:^0.32.0"
+    "@whatwg-node/cookie-store": "npm:^0.2.0"
+    "@whatwg-node/fetch": "npm:^0.9.4"
+    "@whatwg-node/server": "npm:^0.9.15"
+    hotscript: "npm:^1.0.11"
+    json-schema-to-ts: "npm:^3.0.0"
+    qs: "npm:^6.11.2"
+    ts-toolbelt: "npm:^9.6.0"
+    tslib: "npm:^2.3.1"
+  checksum: 10c0/2d9a39899d43b32905de748846e6ec8777938905783a6aa428f563599d66702fdb7d49755634c55248dc434ee9b406dc2f04a9ce4f1ffd0e42a67e893fe66c2f
+  languageName: node
+  linkType: hard
+
 "figgy-pudding@npm:^3.5.1":
   version: 3.5.2
   resolution: "figgy-pudding@npm:3.5.2"
@@ -12337,6 +12402,13 @@ __metadata:
   dependencies:
     react-is: "npm:^16.7.0"
   checksum: 10c0/fe0889169e845d738b59b64badf5e55fa3cf20454f9203d1eb088df322d49d4318df774828e789898dcb280e8a5521bb59b3203385662ca5e9218a6ca5820e74
+  languageName: node
+  linkType: hard
+
+"hotscript@npm:^1.0.11":
+  version: 1.0.13
+  resolution: "hotscript@npm:1.0.13"
+  checksum: 10c0/423ea2aa437befeeffc32ea5a364b0d833f442fecdd7531c6fe8dc3df092c58d31145f757ad505ec7629ce4bb0eb8ff58889c8a58fe36312f975ff682f5cd422
   languageName: node
   linkType: hard
 
@@ -14163,6 +14235,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"json-schema-to-ts@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "json-schema-to-ts@npm:3.0.1"
+  dependencies:
+    "@babel/runtime": "npm:^7.18.3"
+    ts-algebra: "npm:^1.2.2"
+  checksum: 10c0/efabb141d235e5bfc79ee7f4f86de2a0607159c8646a3110f5a1b895cc66d3db35ff52281ee834219f117b08a2ea79c4eb72bbc6a423a163010f4236446401d0
+  languageName: node
+  linkType: hard
+
 "json-schema-traverse@npm:^0.4.1":
   version: 0.4.1
   resolution: "json-schema-traverse@npm:0.4.1"
@@ -15928,6 +16010,13 @@ __metadata:
     is-docker: "npm:^2.1.1"
     is-wsl: "npm:^2.2.0"
   checksum: 10c0/bb6b3a58401dacdb0aad14360626faf3fb7fba4b77816b373495988b724fb48941cad80c1b65d62bb31a17609b2cd91c41a181602caea597ca80dfbcc27e84c9
+  languageName: node
+  linkType: hard
+
+"openapi-types@npm:^12.1.0":
+  version: 12.1.3
+  resolution: "openapi-types@npm:12.1.3"
+  checksum: 10c0/4ad4eb91ea834c237edfa6ab31394e87e00c888fc2918009763389c00d02342345195d6f302d61c3fd807f17723cd48df29b47b538b68375b3827b3758cd520f
   languageName: node
   linkType: hard
 
@@ -18679,6 +18768,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sofa-api@npm:^0.18.0":
+  version: 0.18.3
+  resolution: "sofa-api@npm:0.18.3"
+  dependencies:
+    "@graphql-tools/utils": "npm:^10.0.0"
+    "@whatwg-node/fetch": "npm:^0.9.14"
+    ansi-colors: "npm:^4.1.3"
+    fets: "npm:^0.7.0"
+    openapi-types: "npm:^12.1.0"
+    param-case: "npm:^3.0.4"
+    qs: "npm:^6.11.2"
+    title-case: "npm:^3.0.3"
+    tslib: "npm:^2.5.0"
+  peerDependencies:
+    graphql: ^15.0.0 || ^16.0.0
+  checksum: 10c0/460159ff57105b686e016fb8478266c3444bf6343c4ffa6a67b83d05e6becc9de04d08f8d8b336557baa515d9c84dc7dde8469e7afe2ffc40d760f04c0a43128
+  languageName: node
+  linkType: hard
+
 "sonic-boom@npm:^3.7.0":
   version: 3.8.1
   resolution: "sonic-boom@npm:3.8.1"
@@ -19636,6 +19744,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-algebra@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "ts-algebra@npm:1.2.2"
+  checksum: 10c0/dabfb7fad18b3bb56ed6b14404c2d9d7d41f181df599d50ad6643c6ff1afc459524969d80898183f9e5c66378163799991bfac799790899034ae8cfc99904c74
+  languageName: node
+  linkType: hard
+
 "ts-invariant@npm:^0.10.3":
   version: 0.10.3
   resolution: "ts-invariant@npm:0.10.3"
@@ -19710,7 +19825,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-toolbelt@npm:9.6.0":
+"ts-toolbelt@npm:9.6.0, ts-toolbelt@npm:^9.6.0":
   version: 9.6.0
   resolution: "ts-toolbelt@npm:9.6.0"
   checksum: 10c0/838f9a2f0fe881d5065257a23b402c41315b33ff987b73db3e2b39fcb70640c4c7220e1ef118ed5676763543724fdbf4eda7b0e2c17acb667ed1401336af9f8c
