@@ -2,16 +2,13 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 ul {
-  list-style-type: none;
-  margin: 1rem 0;
-  padding: 0;
+  list-style-type: disc;
 }
 li {
-  display: inline-block;
-  margin: 0 1rem 0 0 ;
+  margin: 0.5rem 0;
 }
-h1 > a {
-  text-decoration: none;
+a {
+  text-decoration: underline;
   color: black;
 }
 button, input, label, textarea {

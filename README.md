@@ -25,7 +25,7 @@ Example API Calls (with auth disabled for quick demo purposes):
 
 ### REST Playground
 
-Again, enabled here for testing purposes: Go to our [REST Swagger](https://keenfortasks.netlify.app/.netlify/functions/api/swagger)
+Again, enabled here for testing purposes: Go to the REST Swagger Playground at https://keenfortasks.netlify.app/.netlify/functions/rest/api/swagger.
 
 ## Running the project for the first time
 
