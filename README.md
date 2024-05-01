@@ -9,7 +9,7 @@ KeenForTasks - A demo API for managing schedules and tasks via GraphQL or REST. 
 
 ## Demo & Examples
 
-You can sign-up for an ugly web demo of the API calls. You can use agentId and accountID as 1 (they both already exist).
+You can sign-up for the web demo of the API calls. After you sign up and log in, you can use agentId and accountID as 1 (they both already exist) to create tasks and schedules.
 
 Go to https://keenfortasks.netlify.app/
 
