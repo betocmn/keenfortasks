@@ -29,6 +29,7 @@ const ScaffoldLayout = ({
             {title}
           </Link>
         </h1>
+        <Link to={routes.home()}>{'<< Home'}</Link>
         {isAuthenticated ? (
           <div>
             <button type="button" onClick={logOut}>
